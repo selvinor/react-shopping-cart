@@ -5,7 +5,7 @@ import {
 } from "../types";
 
 export const productsReducer = (state = {}, action) => {
-  console.log("reducer action.payload: ", action.payload);
+  // console.log("reducer action.payload: ", action.payload);
   switch (action.type) {
     case FILTER_PRODUCTS_BY_SIZE:
       return {
