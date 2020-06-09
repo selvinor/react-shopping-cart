@@ -1,32 +1,29 @@
 // feature 1
 import React from "react";
-import Products from "./components/Products";
-import Filter from "./components/Filter";
-import Cart from "./components/Cart";
 import store from "./store";
 import { Provider } from "react-redux";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import AdminScreen from "./screens/AdminScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
+        <BrowserRouter>
         <div className="grid-container">
           <header>
-            <a href="/">React Shopping Cart</a>
+            <Link to="/">React Shopping Cart</Link>
+            <Link to="/admin">Admin</Link>
           </header>
           <main>
-            <div className="content">
-              <div className="main">
-                <Filter />
-                <Products />
-              </div>
-              <div className="sidebar">
-                <Cart />
-              </div>
-            </div>
+            <Route path="/admin" component={AdminScreen} exact />
+            <Route path="/" component={HomeScreen} exact />
+
           </main>
           <footer>All rights are reserved.</footer>
         </div>
+        </BrowserRouter>
       </Provider>
     );
   }
