@@ -1,1 +1,1 @@
-mongo ds117592.mlab.com:17592/react-shopping-cart-test -u react-shopping-cart-test -p Q7Tzz_8hBaVS-PM
+mongodb://react-shopping-cart-test:Q7Tzz_8hBaVS-PM@ds117592.mlab.com:17592/react-shopping-cart-test

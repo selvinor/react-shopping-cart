@@ -97,5 +97,5 @@ app.delete("/api/orders/:id", async (req, res) => {
   const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);
 });
-const port = process.env.Port || 5000;
-app.listen(port, () => console.log("server at http://localhost:5000"));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log("server at ", port));
