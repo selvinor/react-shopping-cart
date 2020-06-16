@@ -125,7 +125,7 @@
          3. filter-size {flex:1}
             1. label Filter select value=this.props.size
             2. onChange= this.props.filterProducts(e.t.value)
-            3. option "" ALL, XS, S, M, L, XL, XXL
+            3. option "Standard", "Deluxe", "Premium"
    4. Update <Filter size={this.state.size} sort={this.state.sort} sortProducts={this.sortProducts} filterProducts={this.filterProducts} >
    5. this.state = {sort:"", size:"", products}
    6. filterProducts = (size)=>{this.setState({size, products:
