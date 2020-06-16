@@ -33,6 +33,7 @@ class Cart extends Component {
   };
   closeModal = () => {
     this.props.clearOrder();
+    this.setState({ showCheckout: false });
   };
   render() {
     const { cartItems, order } = this.props;
