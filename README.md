@@ -80,7 +80,7 @@
    3. Enter Products Component, Show list of products, Open, 2
    4. Add Time ? Hours, Rate 30 USD/Hours, Cost ? USD
    5. Add All Features
-   6. Create Github account
+   6. Github account
    7. Create new repository
    8. Add it as remote repository in VS Code
    9. Commit changes
