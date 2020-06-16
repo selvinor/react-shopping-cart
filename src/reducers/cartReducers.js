@@ -1,12 +1,14 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../types";
+import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from "../types";
 
-export const cartReducer = (   
+export const cartReducer = (
   state = { cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]") },
-  action 
+  action
 ) => {
   switch (action.type) {
     case ADD_TO_CART:
       return { cartItems: action.payload.cartItems };
+    case CLEAR_CART:
+      return { cartItems: [] };
     case REMOVE_FROM_CART:
       return { cartItems: action.payload.cartItems };
     default:
