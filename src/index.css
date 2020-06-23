@@ -245,13 +245,39 @@ input {
   width:100%;
   padding:10px;
 }
-
-tbody > tr:nth-child(odd) {
-  background-color: #f0f0f0;
+/*    flexbox Order List   */
+.flex-grid1 {
+  display: flex;
 }
-td {
-  padding: 5px;
+.flex-grid2 {
+  display: flex;
+  align-items: flex-start; 
 }
-th {
-  text-align:left;
+.col1 {
+  flex: 1;
+  font-weight: bold;
+  padding:5px 0 5px 10px;
+}
+.col2 {
+  flex: 1;
+  justify-content: flex-start;
+  padding:5px;
+}
+.flex-grid2:nth-child(2n){
+  background-color:#f0f0f0;
+}
+.flex-grid1 .col1:nth-child(1),.flex-grid2 .col2:nth-child(1){
+  flex-grow: .5
+  ;
+}
+.flex-grid1 .col1:nth-child(2),.flex-grid2 .col2:nth-child(2){
+  flex-grow: 1.0;
+}
+.flex-grid1 .col1:nth-child(3),.flex-grid2 .col2:nth-child(3){
+  flex-grow: .4;
+}
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
 }
