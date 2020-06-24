@@ -1,0 +1,50 @@
+[
+    {
+      "_id": "flower1",
+      "image": "/images/flower1.jpg",
+      "title": "Designer's Choice",
+      "description": "Beautiful blossoms presented in an unforgettable way.",
+      "availableSizes": ["Standard", "Deluxe"],
+      "price": 45.00
+    },
+    {
+      "_id": "flower2",
+      "image": "/images/flower2.jpg",
+      "title": "Summer Breeze",
+      "description": "Flowers full of summertime happiness/joy",
+      "availableSizes": ["Standard", "Deluxe", "Premium"],
+      "price": 35.00
+    },
+    {
+      "_id": "flower3",
+      "image": "/images/flower3.jpg",
+      "title": "Amour",
+      "description": "Send a message of love with our stunning floral arrangement",
+      "availableSizes": ["Standard", "Deluxe", "Premium"],
+      "price": 50.00
+    },
+    {
+      "_id": "flower4",
+      "image": "/images/flower4.jpg",
+      "title": "Pretty in Pink",
+      "description": "The season's freshest flowers",
+      "availableSizes": ["Deluxe"],
+      "price": 30.00
+    },
+    {
+      "_id": "flower5",
+      "image": "/images/flower5.jpg",
+      "title": "Simply you",
+      "description": "Enchants with its soft sophistication.",
+      "availableSizes": ["Deluxe"],
+      "price": 25.00
+    },
+    {
+      "_id": "flower6",
+      "image": "/images/flower6.jpg",
+      "title": "Mardi Gras",
+      "description": "The bright, contrasting colors with add joy to any room",
+      "availableSizes": ["Standard", "Deluxe", "Premium"],
+      "price": 40.00
+    }
+  ]

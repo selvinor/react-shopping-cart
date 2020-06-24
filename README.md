@@ -170,10 +170,29 @@
    8. Update showCheckout state to true on click
    9. Conditional rendering Checkout Form
    10. Get Email, Name and Address required input
+      <!-- a. ToDo: Add Pickup/Delivery options
+         Delivery: 
+            1. Gift Message
+            2. Recipient Contact Info
+               Name
+               Address
+               Phone
+            3. Sender Contact Info
+               Name
+               Email
+               Phone  
+            4. Handle Notifications 
+         Pickup: 
+            1. Pickup Time
+            2. Check-In service
+      b. ToDo: Add Upsells -->
    11. Define handleInput function
    12. Add Checkout Button
    13. Handle onSubmit Form Event by this.createOrder
    14. Create order object and pass to parent to handle it
+      <!-- a. ToDo: Handle Payment
+      b. ToDo: Handle finite quantity products -->
+
    15. Commit and Publish changes
    16. Pull request, merge, change to master
    17. Task Management Spreadsheet set it done
