@@ -6,16 +6,49 @@
       2. Instant Feedback
       3. Animated and Intuitive Design
       4. List Products
+         <!-- a. Test that Products GET response === Products in Database -->
       5. Sort Products By Price High or Low
+         <!-- a. Test that Products are sorted in proper Price sequence when switched -->
       6. Filter Products by Size
+         <!-- a. Test that Products are filtered by Size when switched -->
       7. Open Modal By Click on Product
       8. Add Product To Cart using Animation
+         <!-- a. Test that Products are added to Cart -->
       9. Handle Multiple Click By Adding More Items
       10. Remove Product
+         <!-- a. Test that Products are removed from Cart -->
       11. Show Checkout Form
       12. Create Order with user friendly id
-      13. Admin Section to see list of products
+         <!-- a. Test Order POST response  === Order in Database -->
+      13. Admin Section to see list of Orders
+         <!-- a. Test Order GET response  === Order in Database -->
       14. Using postman to add or remove products and orders
+      15.   *** ToDos *** 
+         a. Add seed database utilities
+         b. Split out mongoDB models for Orders, Products, Deliveries
+         c. Add Automated Tests 
+         d. Setup CI/CD
+         e. Add Pickup/Delivery options 
+            I. Delivery: 
+               1. Gift Message
+               2. Recipient Contact Info
+                  Name
+                  Address
+                  Phone
+               3. Sender Contact Info
+                  Name
+                  Email
+                  Phone  
+               4. Handle Notifications 
+            II.   Pickup: 
+               1. Pickup Time
+         f.    2. Check-In service 
+         g. Add Upsells 
+         h. Handle Payment
+         i. Handle variable quantity products 
+         j. Add decrement/increment product quantity button
+         k. Admin Section to edit list of Products
+
 2. Tools and Technologies
    1. JavaScript
       1. Arrow Functions
@@ -96,8 +129,8 @@
    19. In VS Code switch to master and Sync changes
    20. End => Loop from step 11 for next feature
 5. Products Component
-   1. Create data.json {products:[{_id, title, description, price,image,price,availableSizes }]}
-   2. Update App.js to import data.json
+   <!-- 1. Create data.json {products:[{_id, title, description, price,image,price,availableSizes }]} -->
+   <!-- 2. Update App.js to import data.json -->
    3. div.content {flex, wrap}
       1. div.main {flex: 3 60rem}
       2. div.sidebar {flex: 1 20rem;}
@@ -135,10 +168,10 @@
    8. sortProducts = (sort)=>{this.setState(state =>({sort,
    9. products: state.products.slice().sort((a, b) =>
       sort === "lowestprice"
-      ? (a.price > b.price ? 1 : -1)
+      <!-- ? (a.price > b.price ? 1 : -1) -->
       : sort === "lowestprice"
-      ? (a.price < b.price ? 1 : -1)
-      : (a.\_id > b.\_id ? 1 : -1)
+      <!-- ? (a.price < b.price ? 1 : -1) -->
+      <!-- : (a.\_id > b.\_id ? 1 : -1) -->
       )
 
 7. Cart Component
@@ -170,29 +203,10 @@
    8. Update showCheckout state to true on click
    9. Conditional rendering Checkout Form
    10. Get Email, Name and Address required input
-      <!-- a. ToDo: Add Pickup/Delivery options
-         Delivery: 
-            1. Gift Message
-            2. Recipient Contact Info
-               Name
-               Address
-               Phone
-            3. Sender Contact Info
-               Name
-               Email
-               Phone  
-            4. Handle Notifications 
-         Pickup: 
-            1. Pickup Time
-            2. Check-In service
-      b. ToDo: Add Upsells -->
    11. Define handleInput function
    12. Add Checkout Button
    13. Handle onSubmit Form Event by this.createOrder
    14. Create order object and pass to parent to handle it
-      <!-- a. ToDo: Handle Payment
-      b. ToDo: Handle finite quantity products -->
-
    15. Commit and Publish changes
    16. Pull request, merge, change to master
    17. Task Management Spreadsheet set it done

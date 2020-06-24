@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const { MONGODB_URI } = require('../config');
 
-const order = require('../models/orders');
-const User = require('../models/products');
+const Order = require('../src/models/orders');
+const Product = require('../src/models/products');
 
 const seedorders = require('../db/seed/orders');
 const seedproducts = require('../db/seed/products');
@@ -18,11 +18,11 @@ mongoose.connect(MONGODB_URI)
     console.info('Seeding Database');
     return Promise.all([
 
-      order.insertMany(seedorders),
-      order.createIndexes(),
+      Order.insertMany(seedorders),
+      Order.createIndexes(),
 
-      User.insertMany(seedproducts),
-      User.createIndexes()
+      Product.insertMany(seedproducts),
+      Product.createIndexes()
 
     ]);
   })
