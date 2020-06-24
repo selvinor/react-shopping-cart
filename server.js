@@ -1,35 +1,26 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const shortid = require("shortid");
+const Product = require('./src/models/products');
+const Order = require('./src/models/orders');
+
+const { PORT, CLIENT_ORIGIN, MONGODB_URL } = require('./config');
 
 // const data = require ("./build/data.json");
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/react-shopping-cart-db",
+  MONGODB_URL,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
   }
-);
-
-// mongodb
-const Product = mongoose.model(
-  "products",
-  new mongoose.Schema({
-    _id: { type: String, default: shortid.generate },
-    title: String,
-    description: String,
-    image: String,
-    price: String,
-    availableSizes: [String],
-  })
 );
 
 app.get("/api/products", async (req, res) => {
@@ -47,34 +38,6 @@ app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
-
-const Order = mongoose.model(
-  "order",
-  new mongoose.Schema(
-    {
-      _id: {
-        type: String,
-        default: shortid.generate,
-      },
-      email: String,
-      name: String,
-      address: String,
-      total: Number,
-      cartItems: [
-        {
-          _id: String,
-          name: String,
-          title: String,
-          price: Number,
-          count: Number,
-        },
-      ],
-    },
-    {
-      timestamps: true,
-    }
-  )
-);
 
 app.post("/api/orders", async (req, res) => {
   if (
@@ -97,5 +60,5 @@ app.delete("/api/orders/:id", async (req, res) => {
   const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);
 });
-const port = process.env.PORT || 5000;
+const port = PORT;
 app.listen(port, () => console.log("server at ", port));

@@ -1,0 +1,190 @@
+{
+    "_id": "ZphPoHHK5",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "CWNzonxDK",
+            "title": "Midi sundress with shirring detail",
+            "price": 49.9,
+            "count": 2
+        }
+    ],
+    "total": 99.8,
+    "createdAt": {
+        "$date": "2020-06-10T00:57:00.919Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-10T00:57:00.919Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "YMM2yNMcS",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 1
+        },
+        {
+            "_id": "flower4",
+            "title": "Pretty in Pink",
+            "price": 30,
+            "count": 1
+        },
+        {
+            "_id": "flower3",
+            "title": "Amour",
+            "price": 50,
+            "count": 1
+        }
+    ],
+    "total": 115,
+    "createdAt": {
+        "$date": "2020-06-16T19:57:45.518Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-16T19:57:45.518Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "YWEKtgIpG",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 1
+        },
+        {
+            "_id": "flower4",
+            "title": "Pretty in Pink",
+            "price": 30,
+            "count": 1
+        },
+        {
+            "_id": "flower3",
+            "title": "Amour",
+            "price": 50,
+            "count": 1
+        }
+    ],
+    "total": 115,
+    "createdAt": {
+        "$date": "2020-06-16T19:58:03.316Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-16T19:58:03.316Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "yZd_SEsAx",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 2
+        },
+        {
+            "_id": "flower1",
+            "title": "Designer's Choice",
+            "price": 45,
+            "count": 1
+        }
+    ],
+    "total": 115,
+    "createdAt": {
+        "$date": "2020-06-16T20:02:22.216Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-16T20:02:22.216Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "fv5PIg-qt",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 1
+        },
+        {
+            "_id": "flower1",
+            "title": "Designer's Choice",
+            "price": 45,
+            "count": 1
+        }
+    ],
+    "total": 80,
+    "createdAt": {
+        "$date": "2020-06-23T23:25:24.266Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-23T23:25:24.266Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "AmdT3YAzT",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 1st St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 1
+        }
+    ],
+    "total": 35,
+    "createdAt": {
+        "$date": "2020-06-23T23:29:38.811Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-23T23:29:38.811Z"
+    },
+    "__v": 0
+},
+{
+    "_id": "VgGOzzHTF",
+    "name": "TestUser",
+    "email": "email@email.com",
+    "address": "123 Maple St.",
+    "cartItems": [
+        {
+            "_id": "flower2",
+            "title": "Summer Breeze",
+            "price": 35,
+            "count": 1
+        }
+    ],
+    "total": 35,
+    "createdAt": {
+        "$date": "2020-06-23T23:40:02.557Z"
+    },
+    "updatedAt": {
+        "$date": "2020-06-23T23:40:02.557Z"
+    },
+    "__v": 0
+}

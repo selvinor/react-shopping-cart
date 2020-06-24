@@ -1,1 +1,0 @@
-mongodb://react-shopping-cart-test:Q7Tzz_8hBaVS-PM@ds117592.mlab.com:17592/react-shopping-cart-test
