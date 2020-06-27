@@ -1,19 +1,4 @@
 [{
-    "_id": "ZphPoHHK5",
-    "name": "TestUser",
-    "email": "email@email.com",
-    "address": "123 Maple St.",
-    "cartItems": [
-        {
-            "_id": "CWNzonxDK",
-            "title": "Midi sundress with shirring detail",
-            "price": 49.9,
-            "count": 2
-        }
-    ],
-    "total": 99.8
-},
-{
     "_id": "YMM2yNMcS",
     "name": "TestUser",
     "email": "email@email.com",

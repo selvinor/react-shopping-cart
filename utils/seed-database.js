@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const { MONGODB_URI } = require('../config');
 
-const Order = require('../src/models/orders');
-const Product = require('../src/models/products');
+const Order = require('../models/orders');
+const Product = require('../models/products');
 
 const seedorders = require('../db/seed/orders');
 const seedproducts = require('../db/seed/products');
