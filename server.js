@@ -1,9 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const Product = require('./models/products');
+// const Product = require('./models/products');
 // const Order = require('./models/orders');
 const orderRouter = require('./routes/orders');
+const productRouter = require('./routes/products');
 
 const { PORT, CLIENT_ORIGIN, MONGODB_URL } = require('./config');
 
@@ -24,23 +25,24 @@ mongoose.connect(
   }
 );
 
-app.get("/api/products", async (req, res) => {
-  const products = await Product.find({});
-  res.send(products);
-});
+// app.get("/api/products", async (req, res) => {
+//   const products = await Product.find({});
+//   res.send(products);
+// });
 
-app.post("/api/products", async (req, res) => {
-  const newProduct = new Product(req.body);
-  const savedProduct = await newProduct.save();
-  res.send(savedProduct);
-});
+// app.post("/api/products", async (req, res) => {
+//   const newProduct = new Product(req.body);
+//   const savedProduct = await newProduct.save();
+//   res.send(savedProduct);
+// });
 
-app.delete("/api/products/:id", async (req, res) => {
-  const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-  res.send(deletedProduct);
-});
+// app.delete("/api/products/:id", async (req, res) => {
+//   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+//   res.send(deletedProduct);
+// });
 
 app.use('/api/orders', orderRouter);
+app.use('/api/products', productRouter);
 // app.post("/api/orders", async (req, res) => {
 //   if (
 //     !req.body.name ||

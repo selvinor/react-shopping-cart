@@ -8,11 +8,9 @@ const mongoose = require("mongoose");
 // const User = require('../models/users');
 
 const Order = require("../models/orders");
-const Product = require("../models/products");
 
 // const seedUsers = require('../db/seed/users.json');
 const seedOrders = require("../db/seed/orders.json");
-const seedProducts = require("../db/seed/products.json");
 
 const app = require("../server");
 
@@ -34,8 +32,6 @@ describe("Orders API", function () {
       Order.insertMany(seedOrders),
       Order.createIndexes(),
 
-      Product.insertMany(seedProducts),
-      Product.createIndexes(),
     ]);
     // .then(([users]) => {
     //   user = users[0];
@@ -208,11 +204,9 @@ describe("Orders API", function () {
   
       let data;
       let _res;
-      console.log("about to PUT data");
       return Order.findOne()
         .then((_data) => {
           data = _data;
-          console.log("PUT data: ", data);
           return chai
             .request(app)
             .put(`/api/orders/${data.id}`)

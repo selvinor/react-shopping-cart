@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 // const passport = require('passport');
 
-const Order = require("../models/orders");
+const Product = require("../models/products");
 const router = express.Router();
 
 /* ===============USE PASSPORT AUTH JWT ============= */
@@ -10,28 +10,29 @@ const router = express.Router();
 
 /* ========== GET/READ ALL ITEMS ========== */
 
-router.get("/", (req, res, next) => {
-  const { searchTerm } = req.query;
-  let filter = {};
+// router.get("/", (req, res, next) => {
+  // const { searchTerm } = req.query;
+  // let filter = {};
 
-  if (searchTerm) {
-    filter.orderNumber = searchTerm;
-  }
-
-  Order.find(filter)
-    .then((result) => {
-      return res.status(200).json(result);
-    })
-    .catch((err) => {
-      next(err);
-    });
+  // if (searchTerm) {
+  //   filter.productNumber = searchTerm;
+  // }
+router.get("/", async (req,res) => {
+  try {
+    const products =  await Product.find({});
+    return res.status(200).json(products); 
+  } catch(err) {
+      return err;
+    };
 });
 
 /* ========== GET/READ A SINGLE ITEM ========== */
 router.get("/:id", (req, res, next) => {
+  console.log("***req.params.id: ", req.params.id);
   const id = req.params.id;
-  Order.findOne({ _id: id })
+  Product.findOne({ _id: id })
     .then((result) => {
+      console.log("***DA RESULT IS: ", result);
       if (result !== null) {
         return res.status(200).json(result);
       } else {
@@ -51,41 +52,43 @@ router.get("/:id", (req, res, next) => {
 /* ========== POST/CREATE AN ITEM ========== */
 
 router.post("/", (req, res, next) => {
-  const { name, email, address, total, cartItems } = req.body;
+  const { title, description, image, price, availableSizes } = req.body;
+  console.log("req.body: ", req.body);
+
   /***** Never trust users - validate input *****/
-  if (!req.body.name) {
-    const err = new Error("Missing `name` in request body");
+  if (!req.body.title) {
+    const err = new Error("Missing `title` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.email) {
-    const err = new Error("Missing `email` in request body");
+  if (!req.body.description) {
+    const err = new Error("Missing `description` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.address) {
-    const err = new Error("Missing `address` in request body");
+  if (!req.body.image) {
+    const err = new Error("Missing `image` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.total) {
-    const err = new Error("Missing `total` in request body");
+  if (!req.body.price) {
+    const err = new Error("Missing `price` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.cartItems) {
-    const err = new Error("Missing `cartItems` in request body");
+  if (!req.body.availableSizes) {
+    const err = new Error("Missing `availableSizes` in request body");
     err.status = 400;
     return next(err);
   }
 
-  const newOrder = { name, email, address, total, cartItems };
+  const newProduct = { title, description, image, price, availableSizes };
 
-  Order.create(newOrder)
+  Product.create(newProduct)
     .then((result) => {
       res.location(`${req.originalUrl}/${result._id}`).status(201).json(result);
     })
@@ -98,21 +101,23 @@ router.post("/", (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   // const { id } = req.params;
   const id = req.params.id;
-  const updateOrder = {};
-  const updateFields = ["name", "email", "address", "total", "cartItems"];
+  const updateProduct = {};
+  const updateFields = ["title", "description", "image", "price", "availableSizes"];
+  console.log("req.body: ", req.body);
   updateFields.forEach((field) => {
     if (field in req.body) {
-      updateOrder[field] = req.body[field];
+      updateProduct[field] = req.body[field];
     }
   });
+  console.log("updateProduct: ", updateProduct);
 
   // if (!mongoose.Types.ObjectId.isValid(id)) {
   //   const err = new Error('The `id` is not valid');
   //   err.status = 400;
   //   return next(err);
   // }
-  Order.findByIdAndUpdate({ _id: id }, updateOrder, {
-    $push: { order: updateOrder },
+  Product.findByIdAndUpdate({ _id: id }, updateProduct, {
+    $push: { product: updateProduct },
   })
     .then((result) => {
       if (result) {
@@ -129,7 +134,7 @@ router.put("/:id", (req, res, next) => {
 /* ========== DELETE/REMOVE A SINGLE ITEM ========== */
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
-  Order.findOneAndDelete({ _id: id })
+  Product.findOneAndDelete({ _id: id })
     .then((result) => {
       if (result) {
         res.sendStatus(204);
