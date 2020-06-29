@@ -141,7 +141,7 @@ describe("Orders API", function () {
       });
     });
   });
-
+  
   describe("POST /api/orders", function () {
     it("should create and return a new order when provided valid data", function () {
       const newItem = {
@@ -149,11 +149,11 @@ describe("Orders API", function () {
         email: "email@email.com",
         address: "123 Maple St.",
         cartItems: [
-          { _id: 'flower2', title: 'Summer Breeze', price: 35, count: 1 }, 
-          { _id: 'flower4', title: 'Pretty in Pink', price: 30, count: 1 },
-          { _id: 'flower3', title: 'Amour', price: 50, count: 1 }
+          { _id: "flower2", title: "Summer Breeze", price: 35, count: 1 },
+          { _id: "flower4", title: "Pretty in Pink", price: 30, count: 1 },
+          { _id: "flower3", title: "Amour", price: 50, count: 1 },
         ],
-        total: 35
+        total: 35,
       };
       let res;
       return (
@@ -182,16 +182,112 @@ describe("Orders API", function () {
             return Order.findById(res.body._id);
           })
           .then((data) => {
-            // console.log('POST data.cartItems: ', data.cartItems);
-            // console.log('newItem.cartItems: ', newItem.cartItems);
-            // console.log(true ? newItem.cartItems.toString === data.cartItems.toString : false);
             expect(newItem.name).to.equal(data.name);
             expect(newItem.email).to.equal(data.email);
             expect(newItem.address).to.equal(data.address);
             expect(newItem.total).to.equal(data.total);
-            expect(newItem.cartItems.toString).to.equal(data.cartItems.toString);
+            expect(newItem.cartItems.toString).to.equal(
+              data.cartItems.toString
+            );
           })
       );
     });
   });
+  describe("PUT api/orders", function () {
+    it("should update orders you send over", function () {
+      let updatedOrder = {
+        name: "TestUser",
+        email: "email@email.com",
+        address: "215 Spruce St.",
+        cartItems: [
+          { _id: "flower4", title: "Pretty in Pink", price: 30, count: 1 },
+          { _id: "flower3", title: "Amour", price: 50, count: 3 },
+        ],
+        total: 180,
+      };
+  
+      let data;
+      let _res;
+      console.log("about to PUT data");
+      return Order.findOne()
+        .then((_data) => {
+          data = _data;
+          console.log("PUT data: ", data);
+          return chai
+            .request(app)
+            .put(`/api/orders/${data.id}`)
+            .send(updatedOrder);
+        })
+        .then((res) => {
+          _res = res;
+          expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.an("object");
+          expect(res.body).to.have.keys(
+            "_id",
+            "name",
+            "email",
+            "address",
+            "total",
+            "cartItems",
+            "createdAt",
+            "updatedAt"          );
+          return Order.findById(data.id);
+        })
+        .then((data) => {
+          expect(updatedOrder.name).to.equal(data.name);
+          expect(updatedOrder.email).to.equal(data.email);
+          expect(updatedOrder.address).to.equal(data.address);
+          expect(updatedOrder.total).to.equal(data.total);
+          expect(updatedOrder.cartItems.toString).to.equal(data.cartItems.toString);
+        });
+    });
+  });
+  describe('DELETE api/orders/:id', function() {
+
+    it('should delete a order by id ', function() {
+      let data;
+      return Order.findOne()
+        .then(_data => {
+          data = _data;
+          return chai.request(app).delete(`/api/orders/${data.id}`);
+          // return chai.request(app).delete(`/api/orders/${data.id}`).set('Authorization', `Bearer ${token}`);
+        })
+        .then((res) => {
+          expect(res).to.have.status(204);
+          return Order.find({id : data.id});
+        })
+        .then(res => {
+          expect(res).to.be.a('array');
+          expect(res.length).to.equal(0);
+          return Order.find({id: data.id});
+        })
+        .then(res => {
+          expect(res).to.be.a('array');
+          expect(res.length).to.equal(0);
+        });
+    });
+
+    it('should respond with a 404 if you attempt to delete a order that does not exist', function () {
+
+      let data;
+      return Order.findOne()
+        .then(_data => {
+          data = _data;
+          return chai.request(app).delete(`/api/orders/${data.id}`);
+          // return chai.request(app).delete(`/api/orders/${data.id}`).set('Authorization', `Bearer ${token}`);
+        })
+        .then((res) => {
+          expect(res).to.have.status(204);
+          return chai.request(app).delete(`/api/orders/${data.id}`);
+          // return chai.request(app).delete(`/api/orders/${data.id}`).set('Authorization', `Bearer ${token}`);
+        })
+        .then(res => {
+          expect(res.status).to.equal(404);
+        });
+ 
+    });
+  });
+
 });
+

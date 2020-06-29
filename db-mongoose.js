@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 const { MONGODB_URL } = require('./config');
 
 function dbConnect(url = MONGODB_URL) {
-  return mongoose.connect(url,{'useNewUrlParser': true, 'useCreateIndex': true})
+  return mongoose.connect(url,{'useNewUrlParser': true, 'useCreateIndex': true, 'useFindAndModify': false})
     .catch(err => {
       console.error('Mongoose failed to connect');
       console.error(err);
