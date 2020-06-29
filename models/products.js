@@ -6,18 +6,17 @@ const productSchema = new mongoose.Schema({
   title: String,
   description: String,
   image: String,
-  price: String,
+  price: Number,
   availableSizes: [String],
 });
 
 productSchema.methods.serialize = function() {
   return {
-    date: this.date || '',
-    status: this.status || '',
-    destination: this.destination|| '',
-    vendor: this.vendor || {},
-    pickup: this.pickup || {},
-    delivery: this.delivery || {}                                      
+    title: this.title || '',
+    description: this.description || '',
+    image: this.image|| '',
+    price: this.price || [],
+    availableSizes: this.availableSizes || []                         
   };
 };
 

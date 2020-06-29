@@ -29,11 +29,9 @@ router.get("/", (req, res, next) => {
 
 /* ========== GET/READ A SINGLE ITEM ========== */
 router.get("/:id", (req, res, next) => {
-  console.log("***req.params.id: ", req.params.id);
   const id = req.params.id;
   Order.findOne({ _id: id })
     .then((result) => {
-      console.log("***DA RESULT IS: ", result);
       if (result !== null) {
         return res.status(200).json(result);
       } else {
@@ -54,8 +52,6 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   const { name, email, address, total, cartItems } = req.body;
-  console.log("req.body: ", req.body);
-
   /***** Never trust users - validate input *****/
   if (!req.body.name) {
     const err = new Error("Missing `name` in request body");
@@ -104,13 +100,11 @@ router.put("/:id", (req, res, next) => {
   const id = req.params.id;
   const updateOrder = {};
   const updateFields = ["name", "email", "address", "total", "cartItems"];
-  console.log("req.body: ", req.body);
   updateFields.forEach((field) => {
     if (field in req.body) {
       updateOrder[field] = req.body[field];
     }
   });
-  console.log("updateOrder: ", updateOrder);
 
   // if (!mongoose.Types.ObjectId.isValid(id)) {
   //   const err = new Error('The `id` is not valid');
@@ -133,25 +127,6 @@ router.put("/:id", (req, res, next) => {
 });
 
 /* ========== DELETE/REMOVE A SINGLE ITEM ========== */
-// router.delete('/:id', (req, res, next) => {
-//   // const { id } = req.params;
-//   const id = req.params.id;
-//   // if (!mongoose.Types.ObjectId.isValid(id)) {
-//   //   const err = new Error('The `id` is not valid');
-//   //   err.status = 400;
-//   //   return next(err);
-//   // }
-
-//   const orderRemovePromise = Order.findByIdAndRemove({ _id: id });
-//   Promise.all([orderRemovePromise])
-//     .then(() => {
-//       res.status(204).end();
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-
-// });
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
   Order.findOneAndDelete({ _id: id })

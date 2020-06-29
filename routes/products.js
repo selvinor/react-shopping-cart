@@ -52,41 +52,41 @@ router.get("/:id", (req, res, next) => {
 /* ========== POST/CREATE AN ITEM ========== */
 
 router.post("/", (req, res, next) => {
-  const { name, email, address, total, cartItems } = req.body;
+  const { title, description, image, price, availableSizes } = req.body;
   console.log("req.body: ", req.body);
 
   /***** Never trust users - validate input *****/
-  if (!req.body.name) {
-    const err = new Error("Missing `name` in request body");
+  if (!req.body.title) {
+    const err = new Error("Missing `title` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.email) {
-    const err = new Error("Missing `email` in request body");
+  if (!req.body.description) {
+    const err = new Error("Missing `description` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.address) {
-    const err = new Error("Missing `address` in request body");
+  if (!req.body.image) {
+    const err = new Error("Missing `image` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.total) {
-    const err = new Error("Missing `total` in request body");
+  if (!req.body.price) {
+    const err = new Error("Missing `price` in request body");
     err.status = 400;
     return next(err);
   }
 
-  if (!req.body.cartItems) {
-    const err = new Error("Missing `cartItems` in request body");
+  if (!req.body.availableSizes) {
+    const err = new Error("Missing `availableSizes` in request body");
     err.status = 400;
     return next(err);
   }
 
-  const newProduct = { name, email, address, total, cartItems };
+  const newProduct = { title, description, image, price, availableSizes };
 
   Product.create(newProduct)
     .then((result) => {
@@ -102,7 +102,7 @@ router.put("/:id", (req, res, next) => {
   // const { id } = req.params;
   const id = req.params.id;
   const updateProduct = {};
-  const updateFields = ["name", "email", "address", "total", "cartItems"];
+  const updateFields = ["title", "description", "image", "price", "availableSizes"];
   console.log("req.body: ", req.body);
   updateFields.forEach((field) => {
     if (field in req.body) {
@@ -132,25 +132,6 @@ router.put("/:id", (req, res, next) => {
 });
 
 /* ========== DELETE/REMOVE A SINGLE ITEM ========== */
-// router.delete('/:id', (req, res, next) => {
-//   // const { id } = req.params;
-//   const id = req.params.id;
-//   // if (!mongoose.Types.ObjectId.isValid(id)) {
-//   //   const err = new Error('The `id` is not valid');
-//   //   err.status = 400;
-//   //   return next(err);
-//   // }
-
-//   const productRemovePromise = Product.findByIdAndRemove({ _id: id });
-//   Promise.all([productRemovePromise])
-//     .then(() => {
-//       res.status(204).end();
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-
-// });
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
   Product.findOneAndDelete({ _id: id })
